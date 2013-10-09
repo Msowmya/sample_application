@@ -10,6 +10,7 @@ describe "Static pages" do
     it { should have_content('Sample App') }
     it { should have_title(full_title('')) }
     it { should_not have_title('| Home') }
+
     describe "for signed-in users" do
       let(:user) { FactoryGirl.create(:user) }
       before do
@@ -24,10 +25,9 @@ describe "Static pages" do
           expect(page).to have_selector("li##{item.id}", text: item.content)
         end
       end
+
     end
-
   end
-
   describe "Help page" do
     before { visit help_path }
 
